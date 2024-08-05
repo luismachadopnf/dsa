@@ -6,13 +6,15 @@ list.push(20);
 list.push(30);
 list.push(40);
 
+console.log(list);
+
 // list.pop();
 // list.unshift(5);
 // list.shift();
 
-console.log(list);
+// console.log("find", list.find(10));
+
+// console.log("private property size", list.tail);
 
 console.log("findAt", list.findAt(3));
-console.log("find", list.find(10));
-
-console.log("private property size", list.tail);
+console.log("setAt", list.setAt(12, 0));

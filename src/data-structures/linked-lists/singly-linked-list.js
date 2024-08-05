@@ -1,3 +1,10 @@
+export class ListNode {
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
 export class LinkedList {
   #length = 0;
   #head = null;
@@ -101,26 +108,6 @@ export class LinkedList {
 
   /**
    *
-   * @param {number} index (from 0)
-   * @returns the node at the specified index or -1 if not found
-   */
-  findAt(index) {
-    if (!this.#head || index > this.#length - 1) return null;
-    if (index > 1 && index === this.#length - 1) {
-      return this.#tail.value;
-    }
-
-    let count = 0;
-    let currNode = this.#head;
-    while (count < index) {
-      count++;
-      currNode = currNode.next;
-    }
-    return currNode;
-  }
-
-  /**
-   *
    * Check if a node has the specified value
    *
    * @param {*} value
@@ -140,15 +127,40 @@ export class LinkedList {
     return false;
   }
 
+  /**
+   *
+   * @param {number} index (from 0)
+   * @returns the node at the specified index or -1 if not found
+   */
+  findAt(index) {
+    if (!this.#head || index > this.#length - 1) return null;
+    if (index > 1 && index === this.#length - 1) {
+      return this.#tail;
+    }
+    return getNodeAt(this.head, index);
+  }
+
   // change node value at index
-  set(value) {
-    throw new Error("not implemented");
+  setAt(value, index) {
+    if (!this.#head || index > this.#length - 1) return null;
+    const node = getNodeAt(this.head, index);
+    node.value = value;
+    return node;
   }
 }
 
-export class ListNode {
-  constructor(value, next) {
-    this.value = value;
-    this.next = next;
+function getNodeAt(head, index) {
+  let curr = head;
+  let position = 0;
+
+  while (position < index) {
+    position++;
+    curr = curr.next;
+    if (curr === null) {
+      return null;
+    }
+    curr = curr.next;
   }
+
+  return curr;
 }
