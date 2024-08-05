@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.port": 5501,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.https": {
+    "enable": true,
+    "cert": "/Users/luis/certs/localhost.pem",
+    "key": "/Users/luis/certs/localhost.key",
+    "passphrase": "12345"
+  }
+}
